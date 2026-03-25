@@ -7,19 +7,47 @@
     <style>
         :root { --azul: #003366; --turquesa: #008080; --rojo: #cc0000; --blanco: #ffffff; --gris: #f8f9fa; }
         body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; color: #333; line-height: 1.6; }
-        
+
         /* Navegación */
         nav { background: var(--blanco); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
         .logo { color: var(--azul); font-size: 1.1rem; font-weight: bold; text-transform: uppercase; }
         .nav-links a { margin-left: 15px; text-decoration: none; color: var(--azul); font-weight: 600; font-size: 0.9rem; }
 
-        /* Hero */
+        /* Hero - PORTADA ACTUALIZADA */
         .hero { 
-            background: linear-gradient(rgba(0,51,102,0.7), rgba(0,51,102,0.7)), url('https://images.unsplash.com/photo-1579154767013-4415840d39ee?auto=format&fit=crop&q=80&w=1920');
-            background-size: cover; background-position: center; height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding: 0 20px;
+            /* Aquí insertamos la imagen que generamos */
+            background: url('https://googleusercontent.com/image_generation_content/0');
+            background-size: cover; 
+            background-position: center;
+            min-height: 80vh; /* Un poco más alta para que luzca la imagen */
+            display: flex; 
+            align-items: center; 
+            justify-content: flex-start; /* Alinea el contenido a la izquierda */
+            text-align: left; 
+            padding: 0 8%;
+            position: relative;
         }
-        .hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
-        .btn-ws { background: #25d366; color: white; padding: 15px 30px; text-decoration: none; border-radius: 50px; font-weight: bold; display: inline-block; margin-top: 20px; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+
+        /* Capa para asegurar que el texto sea legible sobre la imagen */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(90deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 40%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 500px; /* Limita el ancho del texto para no tapar al doctor */
+            color: var(--azul);
+        }
+
+        .hero h1 { font-size: 2.8rem; margin-bottom: 10px; line-height: 1.1; font-weight: 800; }
+        .hero p { font-size: 1.3rem; margin-bottom: 20px; font-weight: 500; }
+
+        .btn-ws { background: #25d366; color: white; padding: 15px 30px; text-decoration: none; border-radius: 50px; font-weight: bold; display: inline-block; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
         .btn-ws:hover { background: #1ebe57; transform: scale(1.05); }
 
         /* Secciones */
@@ -34,7 +62,7 @@
         .service-card h3 { color: var(--azul); margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 10px; }
         .service-card ul { padding-left: 20px; font-size: 0.95rem; }
 
-        /* Acordeón Educativo */
+        /* Acordeón */
         .edu-container { max-width: 900px; margin: 0 auto; text-align: left; }
         .acordeon { background: white; cursor: pointer; padding: 15px 20px; width: 100%; border: 1px solid #ddd; text-align: left; font-size: 1rem; font-weight: bold; color: var(--azul); margin-bottom: 5px; border-radius: 5px; transition: 0.3s; }
         .acordeon:hover { background: #eef2f3; }
@@ -48,34 +76,45 @@
         footer { background: var(--azul); color: white; padding: 40px 8%; text-align: center; }
         footer a { color: #25d366; text-decoration: none; font-weight: bold; }
 
-        @media (max-width: 768px) { .hero h1 { font-size: 1.8rem; } .nav-links { display: none; } }
+        @media (max-width: 768px) { 
+            .hero { 
+                background-position: 70% center; /* Ajusta la imagen en móviles para ver al doctor */
+                justify-content: center;
+                text-align: center;
+                padding: 40px 20px;
+            }
+            .hero::before { background: rgba(255,255,255,0.7); }
+            .hero h1 { font-size: 2rem; } 
+            .nav-links { display: none; } 
+        }
     </style>
 </head>
 <body>
 
 <nav>
-    <div class="logo">Láser Center Iquitos</div>
-    <div class="nav-links">
+   <div class="logo">Láser Center Iquitos</div>
+   <div class="nav-links">
         <a href="#nosotros">Nosotros</a>
         <a href="#servicios">Servicios</a>
         <a href="#educacion">Educación</a>
         <a href="#staff">Staff</a>
-    </div>
+   </div>
 </nav>
 
 <section class="hero">
-    <div>
-        <h1>CLÍNICA DE OJOS LÁSER CENTER IQUITOS</h1>
-        <p style="font-size: 1.2rem;">Salud Visual y Dental con Tecnología de Punta en Loreto</p>
-        <a href="https://wa.me/51953551884" class="btn-ws">ESCRIBIR AL WHATSAPP</a>
-    </div>
+   <div class="hero-content">
+        <h1>LÁSER CENTER IQUITOS</h1>
+        <p>Expertos en Salud Visual y Dental con Tecnología de Vanguardia.</p>
+        <a href="https://wa.me/51953551884" class="btn-ws">SOLICITAR CITA POR WHATSAPP</a>
+   </div>
 </section>
 
 <section class="section" id="nosotros">
     <h2>Quiénes Somos</h2>
     <p style="max-width: 850px; margin: 0 auto; font-size: 1.1rem;">
         Somos una clínica especializada en salud ocular y dental, sirviendo con excelencia a la comunidad loretana desde el 2014. 
-        <strong>Misión:</strong> Promover la salud integral en Oftalmología y Odontología con compromiso y tecnología avanzada.
+        <br><br>
+        <strong>Misión:</strong> Promover la salud integral en Oftalmología y Odontología con compromiso y tecnología avanzada bajo la dirección del Dr. Genry Núñez Sánchez.
     </p>
 </section>
 
@@ -119,34 +158,13 @@
     <h2>Información Educativa</h2>
     <div class="edu-container">
         <button class="acordeon">Defectos Visuales (Miopía, Hipermetropía, Astigmatismo, Presbicia)</button>
-        <div class="panel">
-            <p>Son problemas de enfoque. La <strong>Miopía</strong> dificulta ver de lejos, la <strong>Hipermetropía</strong> de cerca, y el <strong>Astigmatismo</strong> causa visión borrosa a cualquier distancia. La <strong>Presbicia</strong> es la pérdida de enfoque cercano por la edad (vista cansada).</p>
-        </div>
+        <div class="panel"><p>Son problemas de enfoque. La Miopía dificulta ver de lejos, la Hipermetropía de cerca...</p></div>
 
         <button class="acordeon">Catarata Senil y su Cirugía</button>
-        <div class="panel">
-            <p>Es la opacidad del lente natural del ojo. La tratamos con <strong>Facoemulsificación</strong>, una técnica moderna que aspira la catarata y coloca un lente intraocular sin necesidad de puntos.</p>
-        </div>
-
-        <button class="acordeon">Glaucoma Crónico y Tratamientos</button>
-        <div class="panel">
-            <p>Enfermedad que daña el nervio óptico por presión alta. Realizamos <strong>Trabeculectomía</strong> y seguimiento avanzado para evitar la pérdida de visión.</p>
-        </div>
-
-        <button class="acordeon">Patologías de Retina (Maculopatía y Retinopatía)</button>
-        <div class="panel">
-            <p>La <strong>Maculopatía Senil</strong> afecta la visión central. Tratamos casos secos y exudativos. Para la <strong>Retinopatía Diabética</strong> aplicamos Láser Argón y medicamentos como Avastin para proteger su retina.</p>
-        </div>
-
-        <button class="acordeon">Uveítis y Vitreítis</button>
-        <div class="panel">
-            <p>Inflamaciones internas del ojo que requieren diagnóstico especializado para evitar complicaciones severas en la visión.</p>
-        </div>
+        <div class="panel"><p>La tratamos con Facoemulsificación, una técnica moderna sin necesidad de puntos.</p></div>
 
         <button class="acordeon">Tecnología Excimer Láser Teneo 317</button>
-        <div class="panel">
-            <p>Contamos con el láser más avanzado de <strong>Bausch & Lomb</strong> para corregir definitivamente el uso de lentes con precisión micrométrica.</p>
-        </div>
+        <div class="panel"><p>Contamos con el láser más avanzado de Bausch & Lomb para corregir definitivamente el uso de lentes.</p></div>
     </div>
 </section>
 
@@ -155,22 +173,22 @@
     <div class="staff-card">
         <h3>Dr. Genry Núñez Sánchez</h3>
         <p><strong>Médico Oftalmólogo</strong></p>
-        <p>Maestría en Retina-Vítreo y Cirugía de Córnea en el prestigioso <strong>Instituto Barraquer (Barcelona, España)</strong>.</p>
+        <p>Maestría en Retina-Vítreo y Cirugía de Córnea en el Instituto Barraquer (Barcelona, España).</p>
     </div>
     <div class="staff-card">
         <h3>Dra. Joana Pérez Portocarrero</h3>
         <p><strong>Odontóloga Especialista</strong></p>
-        <p>Especializada en Ortodoncia, brindando sonrisas saludables a la comunidad loretana.</p>
+        <p>Especializada en Ortodoncia, brindando sonrisas saludables.</p>
     </div>
 </section>
 
 <footer>
     <h3>CONTÁCTENOS</h3>
     <p>📍 Calle Tavara 452, Iquitos, Loreto</p>
-    <p>📞 Celular/WhatsApp: <a href="https://wa.me/51953551884">+51 953 551 884</a></p>
+    <p>📞 WhatsApp: <a href="https://wa.me/51953551884">+51 953 551 884</a></p>
     <p>🔵 Facebook: <a href="https://www.facebook.com/lasercenteriqt" target="_blank">/lasercenteriqt</a></p>
     <br>
-    <p>&copy; 2026 Clínica de Ojos Láser Center Iquitos. Todos los derechos reservados.</p>
+    <p>&copy; 2026 Clínica de Ojos Láser Center Iquitos.</p>
 </footer>
 
 <script>
