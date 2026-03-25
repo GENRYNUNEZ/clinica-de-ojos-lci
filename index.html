@@ -5,50 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Láser Center Iquitos | Clínica de Ojos y Dental</title>
     <style>
-        :root { --azul: #003366; --turquesa: #008080; --rojo: #cc0000; --blanco: #ffffff; --gris: #f8f9fa; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; color: #333; line-height: 1.6; }
+        :root { --azul: #003366; --turquesa: #008080; --blanco: #ffffff; --gris: #f8f9fa; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; color: #333; line-height: 1.6; scroll-behavior: smooth; }
         
-        /* Navegación */
         nav { background: var(--blanco); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
         .logo { color: var(--azul); font-size: 1.1rem; font-weight: bold; text-transform: uppercase; }
         .nav-links a { margin-left: 15px; text-decoration: none; color: var(--azul); font-weight: 600; font-size: 0.9rem; }
 
-        /* Hero */
         .hero { 
-            background: linear-gradient(rgba(0,51,102,0.7), rgba(0,51,102,0.7)), url('https://images.unsplash.com/photo-1579154767013-4415840d39ee?auto=format&fit=crop&q=80&w=1920');
-            background-size: cover; background-position: center; height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding: 0 20px;
+            background: linear-gradient(rgba(0,51,102,0.4), rgba(0,51,102,0.6)), url('portada.jpg');
+            background-size: cover; background-position: center; height: 85vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding: 0 20px;
         }
-        .hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
-        .btn-ws { background: #25d366; color: white; padding: 15px 30px; text-decoration: none; border-radius: 50px; font-weight: bold; display: inline-block; margin-top: 20px; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
-        .btn-ws:hover { background: #1ebe57; transform: scale(1.05); }
+        .hero-box { background: rgba(255, 255, 255, 0.92); padding: 35px; border-radius: 15px; color: var(--azul); max-width: 600px; box-shadow: 0 10px 40px rgba(0,0,0,0.4); border-top: 6px solid var(--turquesa); }
+        .hero h1 { font-size: 2.1rem; margin: 0; color: var(--azul); line-height: 1.2; }
+        .hero p { font-size: 1.3rem; margin: 15px 0; font-weight: bold; color: var(--turquesa); }
+        
+        .grid-servicios-portada { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; text-align: left; font-size: 0.85rem; margin: 20px 0; font-weight: 600; color: #444; }
+        .btn-ws { background: #25d366; color: white; padding: 18px 35px; text-decoration: none; border-radius: 50px; font-weight: bold; display: inline-block; margin-top: 10px; font-size: 1.1rem; transition: 0.3s; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3); }
+        .btn-ws:hover { transform: scale(1.05); background: #1ebe57; }
 
-        /* Secciones */
         .section { padding: 60px 8%; text-align: center; }
         .bg-gris { background: var(--gris); }
-        h2 { color: var(--azul); margin-bottom: 30px; position: relative; padding-bottom: 10px; }
-        h2::after { content: ''; width: 50px; height: 3px; background: var(--turquesa); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
+        h2 { color: var(--azul); border-bottom: 3px solid var(--turquesa); display: inline-block; padding-bottom: 10px; margin-bottom: 30px; text-transform: uppercase; }
 
-        /* Servicios Grid */
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px; }
-        .service-card { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align: left; border-top: 4px solid var(--turquesa); }
-        .service-card h3 { color: var(--azul); margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        .service-card ul { padding-left: 20px; font-size: 0.95rem; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .service-card { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: left; border-left: 5px solid var(--turquesa); }
+        
+        .acordeon { background: white; cursor: pointer; padding: 15px 20px; width: 100%; border: 1px solid #ddd; text-align: left; font-size: 1rem; font-weight: bold; color: var(--azul); margin-bottom: 5px; border-radius: 5px; display: flex; justify-content: space-between; }
+        .panel { padding: 0 20px; background: white; display: none; border: 1px solid #eee; border-top: none; margin-bottom: 10px; text-align: left; }
 
-        /* Acordeón Educativo */
-        .edu-container { max-width: 900px; margin: 0 auto; text-align: left; }
-        .acordeon { background: white; cursor: pointer; padding: 15px 20px; width: 100%; border: 1px solid #ddd; text-align: left; font-size: 1rem; font-weight: bold; color: var(--azul); margin-bottom: 5px; border-radius: 5px; transition: 0.3s; }
-        .acordeon:hover { background: #eef2f3; }
-        .panel { padding: 0 20px; background: white; display: none; overflow: hidden; border: 1px solid #eee; border-top: none; margin-bottom: 10px; }
-        .panel p { margin: 15px 0; font-size: 0.95rem; color: #555; }
-
-        /* Staff */
-        .staff-card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); margin-bottom: 20px; }
-
-        /* Footer */
         footer { background: var(--azul); color: white; padding: 40px 8%; text-align: center; }
         footer a { color: #25d366; text-decoration: none; font-weight: bold; }
 
-        @media (max-width: 768px) { .hero h1 { font-size: 1.8rem; } .nav-links { display: none; } }
+        @media (max-width: 768px) { .hero h1 { font-size: 1.5rem; } .grid-servicios-portada { grid-template-columns: 1fr; } .nav-links { display: none; } }
     </style>
 </head>
 <body>
@@ -58,119 +47,64 @@
     <div class="nav-links">
         <a href="#nosotros">Nosotros</a>
         <a href="#servicios">Servicios</a>
-        <a href="#educacion">Educación</a>
-        <a href="#staff">Staff</a>
+        <a href="#educacion">Guía Médica</a>
     </div>
 </nav>
 
 <section class="hero">
-    <div>
-        <h1>CLÍNICA DE OJOS LÁSER CENTER IQUITOS</h1>
-        <p style="font-size: 1.2rem;">Salud Visual y Dental con Tecnología de Punta en Loreto</p>
-        <a href="https://wa.me/51953551884" class="btn-ws">ESCRIBIR AL WHATSAPP</a>
+    <div class="hero-box">
+        <h1>LÍDERES EN SALUD VISUAL EN IQUITOS DESDE 2014</h1>
+        <p>Tecnología de Vanguardia y Excelencia</p>
+        <div class="grid-servicios-portada">
+            <div>✓ CATARATA Y GLAUCOMA</div>
+            <div>✓ ECOGRAFÍA OCULAR</div>
+            <div>✓ LÁSER EXCIMER (TENEO 317)</div>
+            <div>✓ OCT LÁSER</div>
+            <div>✓ RETINA Y VÍTREO</div>
+            <div>✓ ODONTOLOGÍA ESPECIALIZADA</div>
+        </div>
+        <a href="https://wa.me/51953551884" class="btn-ws">SOLICITAR CITA POR WHATSAPP</a>
     </div>
 </section>
 
 <section class="section" id="nosotros">
     <h2>Quiénes Somos</h2>
-    <p style="max-width: 850px; margin: 0 auto; font-size: 1.1rem;">
-        Somos una clínica especializada en salud ocular y dental, sirviendo con excelencia a la comunidad loretana desde el 2014. 
-        <strong>Misión:</strong> Promover la salud integral en Oftalmología y Odontología con compromiso y tecnología avanzada.
-    </p>
+    <p style="max-width: 800px; margin: 0 auto; font-size: 1.1rem;">Somos la clínica de referencia en Loreto para el tratamiento de enfermedades oculares y dentales. Combinamos la calidez humana con la tecnología más avanzada del mundo para proteger su salud integral.</p>
 </section>
 
 <section class="section bg-gris" id="servicios">
-    <h2>Nuestros Servicios Especializados</h2>
+    <h2>Servicios Especializados</h2>
     <div class="services-grid">
         <div class="service-card">
-            <h3>Oftalmología Avanzada</h3>
-            <ul>
-                <li>Cirugías de Catarata y Glaucoma</li>
-                <li>Cirugía de Vitreo, Retina y Mácula</li>
-                <li>Excimer Láser (Miopía, Astigmatismo, Presbicia)</li>
-                <li>Tratamiento de Carnosidad (Pterigium)</li>
-                <li>OCT de Mácula y Nervio Óptico</li>
-                <li>Aplicación de Avastin y Lucentis</li>
-            </ul>
+            <h3>Oftalmología Especializada</h3>
+            <p>Cirugías de alta complejidad: Facoemulsificación, Trabeculectomía, Cirugía de Retina y Vítreo, y Corrección con Láser Excimer para dejar de usar lentes.</p>
         </div>
         <div class="service-card">
-            <h3>Salud Dental Integral</h3>
-            <ul>
-                <li>Curaciones con Luz Halógena</li>
-                <li>Ortodoncia (Brackets)</li>
-                <li>Blanqueamiento y Prótesis</li>
-                <li>Extracciones y Cirugía Dental</li>
-                <li>Atención Integral Niños y Adultos</li>
-            </ul>
-        </div>
-        <div class="service-card">
-            <h3>Diagnóstico y Óptica</h3>
-            <ul>
-                <li>Medición de vista computarizada</li>
-                <li><strong>Medición de vista GRATUITA</strong></li>
-                <li>Venta de lentes con monturas modernas</li>
-                <li>Manejo de Baja Visión</li>
-            </ul>
+            <h3>Odontología e Higiene</h3>
+            <p>Ortodoncia (Brackets), estética dental, blanqueamiento, curaciones con luz halógena y prótesis dentales de alta calidad.</p>
         </div>
     </div>
 </section>
 
 <section class="section" id="educacion">
-    <h2>Información Educativa</h2>
-    <div class="edu-container">
-        <button class="acordeon">Defectos Visuales (Miopía, Hipermetropía, Astigmatismo, Presbicia)</button>
-        <div class="panel">
-            <p>Son problemas de enfoque. La <strong>Miopía</strong> dificulta ver de lejos, la <strong>Hipermetropía</strong> de cerca, y el <strong>Astigmatismo</strong> causa visión borrosa a cualquier distancia. La <strong>Presbicia</strong> es la pérdida de enfoque cercano por la edad (vista cansada).</p>
-        </div>
-
-        <button class="acordeon">Catarata Senil y su Cirugía</button>
-        <div class="panel">
-            <p>Es la opacidad del lente natural del ojo. La tratamos con <strong>Facoemulsificación</strong>, una técnica moderna que aspira la catarata y coloca un lente intraocular sin necesidad de puntos.</p>
-        </div>
-
-        <button class="acordeon">Glaucoma Crónico y Tratamientos</button>
-        <div class="panel">
-            <p>Enfermedad que daña el nervio óptico por presión alta. Realizamos <strong>Trabeculectomía</strong> y seguimiento avanzado para evitar la pérdida de visión.</p>
-        </div>
-
-        <button class="acordeon">Patologías de Retina (Maculopatía y Retinopatía)</button>
-        <div class="panel">
-            <p>La <strong>Maculopatía Senil</strong> afecta la visión central. Tratamos casos secos y exudativos. Para la <strong>Retinopatía Diabética</strong> aplicamos Láser Argón y medicamentos como Avastin para proteger su retina.</p>
-        </div>
-
-        <button class="acordeon">Uveítis y Vitreítis</button>
-        <div class="panel">
-            <p>Inflamaciones internas del ojo que requieren diagnóstico especializado para evitar complicaciones severas en la visión.</p>
-        </div>
-
-        <button class="acordeon">Tecnología Excimer Láser Teneo 317</button>
-        <div class="panel">
-            <p>Contamos con el láser más avanzado de <strong>Bausch & Lomb</strong> para corregir definitivamente el uso de lentes con precisión micrométrica.</p>
-        </div>
-    </div>
-</section>
-
-<section class="section bg-gris" id="staff">
-    <h2>Staff Médico</h2>
-    <div class="staff-card">
-        <h3>Dr. Genry Núñez Sánchez</h3>
-        <p><strong>Médico Oftalmólogo</strong></p>
-        <p>Maestría en Retina-Vítreo y Cirugía de Córnea en el prestigioso <strong>Instituto Barraquer (Barcelona, España)</strong>.</p>
-    </div>
-    <div class="staff-card">
-        <h3>Dra. Joana Pérez Portocarrero</h3>
-        <p><strong>Odontóloga Especialista</strong></p>
-        <p>Especializada en Ortodoncia, brindando sonrisas saludables a la comunidad loretana.</p>
+    <h2>Guía Educativa al Paciente</h2>
+    <div style="max-width: 800px; margin: 0 auto;">
+        <button class="acordeon">Miopía, Astigmatismo y Presbicia <span>+</span></button>
+        <div class="panel"><p>Corregimos estos defectos de refracción de forma definitiva con nuestro Láser Teneo 317 de Bausch & Lomb.</p></div>
+        
+        <button class="acordeon">Catarata y Glaucoma <span>+</span></button>
+        <div class="panel"><p>Tratamientos modernos para recuperar la nitidez visual y controlar la presión intraocular con seguridad.</p></div>
+        
+        <button class="acordeon">Retinopatía y Mácula <span>+</span></button>
+        <div class="panel"><p>Diagnóstico por OCT y tratamientos con Láser Argón y aplicaciones de Avastin/Lucentis.</p></div>
     </div>
 </section>
 
 <footer>
-    <h3>CONTÁCTENOS</h3>
-    <p>📍 CALLE TAVARA 452, Iquitos, Loreto</p>
-    <p>📞 Celular/WhatsApp: <a href="https://wa.me/51953551884">+51 953 551 884</a></p>
-    <p>🔵 Facebook: <a href="https://www.facebook.com/lasercenteriqt" target="_blank">/lasercenteriqt</a></p>
+    <p>📍 Calle Tavara 452, Iquitos | 📱 WhatsApp: <b>953 551 884</b></p>
+    <p>🔵 Visítanos en Facebook: <a href="https://www.facebook.com/lasercenteriqt" target="_blank">/lasercenteriqt</a></p>
     <br>
-    <p>&copy; 2026 Clínica de Ojos Láser Center Iquitos. Todos los derechos reservados.</p>
+    <p>&copy; 2026 Clínica Láser Center Iquitos. Excelencia Médica en la Selva.</p>
 </footer>
 
 <script>
