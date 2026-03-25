@@ -10,13 +10,13 @@
 
         /* Navegación */
         nav { background: var(--blanco); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
-        .logo { color: var(--azul); font-size: 1.1rem; font-weight: bold; text-transform: uppercase; }
+        .logo { color: var(--azul); font-size: 1.1rem; font-weight: bold; text-transform: uppercase; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;}
         .nav-links a { margin-left: 15px; text-decoration: none; color: var(--azul); font-weight: 600; font-size: 0.9rem; }
 
         /* Hero - PORTADA ACTUALIZADA */
         .hero { 
-            /* Aquí insertamos la imagen que generamos */
-            background: url('https://googleusercontent.com/image_generation_content/0');
+            /* Se ha insertado el nombre del archivo de imagen aquí */
+            background: url('portada.jpg');
             background-size: cover; 
             background-position: center;
             min-height: 80vh; /* Un poco más alta para que luzca la imagen */
@@ -33,7 +33,7 @@
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(90deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 40%, rgba(255,255,255,0) 100%);
+            background: linear-gradient(90deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.5) 40%, rgba(255,255,255,0) 100%);
             z-index: 1;
         }
 
@@ -78,13 +78,14 @@
 
         @media (max-width: 768px) { 
             .hero { 
-                background-position: 70% center; /* Ajusta la imagen en móviles para ver al doctor */
+                background-position: 65% center; /* Ajusta la imagen en móviles para centrar mejor al doctor */
                 justify-content: center;
                 text-align: center;
                 padding: 40px 20px;
             }
-            .hero::before { background: rgba(255,255,255,0.7); }
-            .hero h1 { font-size: 2rem; } 
+            .hero::before { background: rgba(255,255,255,0.75); }
+            .hero h1 { font-size: 2.2rem; } 
+            .hero p { font-size: 1.1rem; }
             .nav-links { display: none; } 
         }
     </style>
@@ -184,7 +185,7 @@
 
 <footer>
     <h3>CONTÁCTENOS</h3>
-    <p>📍 Calle Tavara 452, Iquitos, Loreto</p>
+    <p>📍 CALLE TAVARA 452, Iquitos, Loreto</p>
     <p>📞 WhatsApp: <a href="https://wa.me/51953551884">+51 953 551 884</a></p>
     <p>🔵 Facebook: <a href="https://www.facebook.com/lasercenteriqt" target="_blank">/lasercenteriqt</a></p>
     <br>
